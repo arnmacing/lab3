@@ -24,9 +24,10 @@ public abstract class Human {
     //
     // that's couple of ABSOLUTELY useless methods
     //
+
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return name.hashCode() * State.locale(state).hashCode();
     }
     // I LITERALLY HAve NO IDEA WHY THIS EVEN EXISTS
 
@@ -39,7 +40,7 @@ public abstract class Human {
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj instanceof Human) {
-            return name.equals(((Human) obj).getName());
+            return name.equals(((Human) obj).getName()) && state == ((Human) obj).state;
         }
         return false;
     }
